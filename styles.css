@@ -1,0 +1,22 @@
+body{
+  font-family: Roboto;
+  margin: 0;
+}
+
+h1{
+  text-align: center;
+  color: purple;
+}
+
+.credit {
+  background: rgb(114, 7, 114);
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 0px;
+}
+.credit a {
+  color: white;
+  text-decoration: none;
+}
