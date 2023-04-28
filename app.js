@@ -23,9 +23,9 @@ let idNumber = 0;
 for (i=1; i <= 16; i++){
   for (j=1; j <=16; j++){
   let square = document.createElement('div');
-  square.textContent = i;
+  square.textContent = "_";
   square.classList = "square";
-  square.setAttribute('style', 'border: 1px solid black');
+  square.setAttribute('style', 'border: 1px solid black; width:58px;');
   square.setAttribute('id', idNumber);
   sketchPad.append(square);
   console.log(`Appended square: ${i}`)
