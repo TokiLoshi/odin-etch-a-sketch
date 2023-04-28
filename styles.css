@@ -1,11 +1,12 @@
 body{
-  font-family: Roboto;
+  font-family: "Courier New";
   margin: 0;
 }
 
 h1{
   text-align: center;
   color: purple;
+  font-family: monospace;
 }
 
 .credit {
@@ -19,4 +20,47 @@ h1{
 .credit a {
   color: white;
   text-decoration: none;
+}
+.container {
+  /* display: flex;
+  justify-content: center; */
+  text-align: center;
+  background: rgb(89, 8, 116);
+  color: white;
+  padding: 50px;
+  margin: 30px;
+  border-radius: 5px;
+  box-shadow: 4px 4px;
+
+}
+
+.sketchButton {
+  color: rgb(255, 255, 255);
+  background: rgb(255, 166, 2);
+  font-size: 18px;
+}
+.sketchButton:hover {
+  background:rgb(211, 147, 28);
+  color: rgb(255, 255, 255);
+
+}
+
+.sketchpad {
+  margin:0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: green;
+  width: 960px;
+}
+
+.square {
+  background: blue;
+  width: 58px;
+
+  text-align: center;
+
+
 }
