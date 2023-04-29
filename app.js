@@ -154,14 +154,46 @@ clearAll.classList = "sketchButton";
 sketchPad.append(clearAll);
 
 clearAll.addEventListener('click', () => {
-  alert("Clear")
   const clearPixels = document.querySelectorAll('.square');
   clearPixels.forEach((clearPixel) => {
-    clearPixel.style.background = 'orange';
+    clearPixel.style.background = 'blue';
   })
   })
 
 // Add random colors
+const rainbows = document.createElement('button');
+rainbows.textContent = "Go Rainbow";
+rainbows.classList = "sketchButton";
+sketchPad.append(rainbows);
+
+// 
+rainbows.addEventListener('click', () => {
+  alert("Rainbow!");
+
+  const rainbowPixels = document.querySelectorAll('.square');
+  rainbowPixels.forEach((rainbowPixel) => {
+    rainbowPixel.addEventListener('mouseover', () => {
+      let redVar = `${Math.floor(Math.random() * 255)}`;
+      console.log(`Red Var: ${redVar}`)
+      let greenVar = `${Math.floor(Math.random() * 255)}`;
+      console.log(`Green Var: ${greenVar}`)
+      let blueVar = `${Math.floor(Math.random() * 255)}`;
+      rainbowPixel.style.background = `rgb(${redVar}, ${greenVar}, ${blueVar})`;
+      
+      // For each pass of the mouse the pixels should get darker
+      // if (redVar <= 255){
+      //   redVar += 10;
+      // }
+      // if (greenVar <= 255){
+      //   greenVar += 10;
+      // }
+      // if (blueVar <= 255){
+      //   blueVar += 10;
+      // }
+    })
+  })
+})
+
 
 };
 
