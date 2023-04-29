@@ -40,7 +40,7 @@ function generateNewCanvas(size){
       let square = document.createElement('div');
       square.textContent = i;
       square.classList = "square";
-      square.setAttribute('style', `width: ${getDimensions}; height: ${getDimensions};`);
+      square.setAttribute('style', `width: ${getDimensions}px; height: ${getDimensions};px`);
       square.setAttribute('id', idNumber);
       newSketch.append(square);
       idNumber++;
@@ -78,14 +78,13 @@ for (i=1; i <= 16; i++){
   }
   
 }
-
 // Change background of pixels when mouse over by user 
 const newPixels = document.querySelectorAll('.square')
 newPixels.forEach((newPixel) => {
   newPixel.addEventListener('mouseover', () => {
     newPixel.style.background = 'purple';
   })
-})
+});
 
 // Add Button to allow user to prompt a new size 
 const editBox = document.createElement('div');
@@ -99,13 +98,13 @@ editBox.appendChild(changeCanvas);
 
 // Add new Event to generate new canvas
 changeCanvas.addEventListener('click', () => {
-  getSize = prompt("What size canvas would you like? (Max 100)")
-  alert(getSize)
+  getSize = prompt("How many squares would you like? (Max 100)")
+
   if (isNaN(getSize)){
     alert("Please enter a number")
   }
-  else if(parseInt(getSize) > 100){
-    alert("That's too large, we're sorry, please try again")
+  else if(parseInt(getSize) > 100 || parseInt(getSize) <= 0){
+    alert("Please choose a number between 1 and 100")
 
   }
   else {
@@ -116,12 +115,39 @@ changeCanvas.addEventListener('click', () => {
   }
 })
 
-// Remove old canvas
-// Do some math about size of squares
-// Create new canvas with those many squares capped at 100
-// Create an EventListener to watch for those and change the mouseover on those
-// Create button for different colours 
-// Create rendom colour
+// Add button to allow user to erase
+const eraser = document.createElement('button');
+eraser.textContent = "Erase";
+eraser.classList = 'sketchButton';
+
+sketchPad.appendChild(eraser);
+
+eraser.addEventListener('click', () => {
+  const erasePixels = document.querySelectorAll('.square');
+  erasePixels.forEach((erasePixel) => {
+    erasePixel.addEventListener('mouseover', () => {
+      erasePixel.style.background = 'blue';
+    })
+  })
+});
+
+const keepDrawing = document.createElement('button');
+keepDrawing.textContent = "Sketch";
+keepDrawing.classList = "sketchButton";
+sketchPad.append(keepDrawing);
+
+keepDrawing.addEventListener('click', () => {
+  const drawPixels = document.querySelectorAll('.square');
+  drawPixels.forEach((drawPixel) => {
+    drawPixel.addEventListener('mouseover', () => {
+      drawPixel.style.background = 'purple';
+    })
+  })
+})
 
 
 };
+
+// Create button for different colours 
+// Create rendom colour
+// Erase background

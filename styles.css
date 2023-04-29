@@ -58,12 +58,11 @@ h1{
   flex-wrap: wrap;
   background: green;
   cursor: pointer;
+  width: 960px;
 
 }
 
 .square {
   background: blue;
   text-align: center;
-
-
 }
