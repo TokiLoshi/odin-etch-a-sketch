@@ -119,9 +119,9 @@ changeCanvas.addEventListener('click', () => {
 const eraser = document.createElement('button');
 eraser.textContent = "Erase";
 eraser.classList = 'sketchButton';
-
 sketchPad.appendChild(eraser);
 
+// Reset content back to original color
 eraser.addEventListener('click', () => {
   const erasePixels = document.querySelectorAll('.square');
   erasePixels.forEach((erasePixel) => {
@@ -131,11 +131,13 @@ eraser.addEventListener('click', () => {
   })
 });
 
+// Create button to let user "keep drawing"
 const keepDrawing = document.createElement('button');
 keepDrawing.textContent = "Sketch";
 keepDrawing.classList = "sketchButton";
 sketchPad.append(keepDrawing);
 
+// Change background on hover 
 keepDrawing.addEventListener('click', () => {
   const drawPixels = document.querySelectorAll('.square');
   drawPixels.forEach((drawPixel) => {
@@ -145,6 +147,21 @@ keepDrawing.addEventListener('click', () => {
   })
 })
 
+// Create button to clear the space
+const clearAll = document.createElement('button');
+clearAll.textContent = "Clear";
+clearAll.classList = "sketchButton";
+sketchPad.append(clearAll);
+
+clearAll.addEventListener('click', () => {
+  alert("Clear")
+  const clearPixels = document.querySelectorAll('.square');
+  clearPixels.forEach((clearPixel) => {
+    clearPixel.style.background = 'orange';
+  })
+  })
+
+// Add random colors
 
 };
 
