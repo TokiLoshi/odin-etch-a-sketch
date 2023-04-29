@@ -8,7 +8,7 @@ sketchButton.textContent = "Start Sketching";
 sketchButton.setAttribute('style', 'border: solid 1px white; padding: 10px; margin: 10px; border-radius: 5px;');
 getContainer.append(sketchButton);
 
-// Add default lo load
+// Add default number of squares 
 const defaultSize = 16;
 
 // Add EventListener to the SketchPad
@@ -16,48 +16,12 @@ sketchButton.addEventListener('click', () => {
   createSketchPad(defaultSize)
 });
 
-// Create new canvas based on user input
-function generateNewCanvas(size){
-  console.log(`We're in the generate New canvas function and we have a ${size}`);
-  const sketchPad = document.querySelector('.sketchpad');
-  
-  // Remove current sketch area
-  if (sketchPad) {
-    sketchPad.remove()
-  }
-  // get max size of dimensions 
-  const getDimensions = 960 / size;
-  console.log(`Dimensions: ${getDimensions}`)
-  const newSketch = document.createElement('div');
-  newSketch.classList = 'sketchpad';
-  newSketch.setAttribute('style', 'color: white; border: solid 1px black;');
-  getContainer.appendChild(newSketch);
-
-  // iterate to create new dimension
-  let idNumber = 0;
-  for (i=1; i <= size; i++){
-    for (j=1; j <= size; j++){
-      let square = document.createElement('div');
-      square.textContent = i;
-      square.classList = "square";
-      square.setAttribute('style', `width: ${getDimensions}px; height: ${getDimensions};px`);
-      square.setAttribute('id', idNumber);
-      newSketch.append(square);
-      idNumber++;
-    }
-  }
-  const drawPixels = document.querySelectorAll('.square')
-  drawPixels.forEach((drawPixel) => {
-    drawPixel.addEventListener('mouseover', () => {
-      drawPixel.style.background = 'green';
-    })
-  })
-  
-}
 
 // Create initial sketchpad 
 function createSketchPad(size) {
 console.log(`Size: ${size}`);
+const squareWidth = 960 / size;
+console.log(`SquareWidth: ${squareWidth}`)
 
 const sketchPad = document.createElement('div');
 sketchPad.classList = 'sketchpad';
@@ -68,12 +32,13 @@ sketchButton.remove()
 
 // In sketchbox create 16x 60px wide and high squares
 let idNumber = 0;
-for (i=1; i <= 16; i++){
-  for (j=1; j <=16; j++){
+for (i=1; i <= size; i++){
+  for (j=1; j <= size; j++){
   let square = document.createElement('div');
-  square.textContent = i;
+  square.textContent = " ";
   square.classList = "square";
-  square.setAttribute('style', 'width:60px; height: 60px;');
+  // square.setAttribute('style', 'width:60px; height: 60px;');
+  square.setAttribute('style', `width:${squareWidth}px; height:${squareWidth}px;`);
   square.setAttribute('id', idNumber);
   sketchPad.append(square);
   idNumber++;
@@ -112,8 +77,10 @@ changeCanvas.addEventListener('click', () => {
   else {
     if (sketchPad){
       sketchPad.remove()
+      changeCanvas.remove()
     }
-    generateNewCanvas(getSize);
+    console.log(`New Size: ${getSize}`);
+    createSketchPad(getSize);
   }
 })
 
@@ -128,7 +95,7 @@ eraser.addEventListener('click', () => {
   const erasePixels = document.querySelectorAll('.square');
   erasePixels.forEach((erasePixel) => {
     erasePixel.addEventListener('mouseover', () => {
-      erasePixel.style.background = 'blue';
+      erasePixel.style.background = 'white';
     })
   })
 });
@@ -158,7 +125,7 @@ sketchPad.append(clearAll);
 clearAll.addEventListener('click', () => {
   const clearPixels = document.querySelectorAll('.square');
   clearPixels.forEach((clearPixel) => {
-    clearPixel.style.background = 'blue';
+    clearPixel.style.background = 'white';
   })
   })
 
@@ -170,8 +137,6 @@ sketchPad.append(rainbows);
 
 // 
 rainbows.addEventListener('click', () => {
-  alert("Rainbow!");
-
   let counter = 0
   const rainbowPixels = document.querySelectorAll('.square');
   rainbowPixels.forEach((rainbowPixel) => {
