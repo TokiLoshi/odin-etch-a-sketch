@@ -1,4 +1,4 @@
-// Get container Element to pust stuff in
+// Get container Element to put stuff in
 const getContainer = document.querySelector('.container');
 
 // Create Sketch Button to trigger sketching
@@ -56,7 +56,9 @@ function generateNewCanvas(size){
 }
 
 // Create initial sketchpad 
-function createSketchPad() {
+function createSketchPad(size) {
+console.log(`Size: ${size}`);
+
 const sketchPad = document.createElement('div');
 sketchPad.classList = 'sketchpad';
 // sketchPad.textContent = 'Sketching';
@@ -170,15 +172,22 @@ sketchPad.append(rainbows);
 rainbows.addEventListener('click', () => {
   alert("Rainbow!");
 
+  let counter = 0
   const rainbowPixels = document.querySelectorAll('.square');
   rainbowPixels.forEach((rainbowPixel) => {
     rainbowPixel.addEventListener('mouseover', () => {
+
+      console.log(`Counter at beginning; ${counter}`)
       let redVar = `${Math.floor(Math.random() * 255)}`;
       console.log(`Red Var: ${redVar}`)
       let greenVar = `${Math.floor(Math.random() * 255)}`;
       console.log(`Green Var: ${greenVar}`)
       let blueVar = `${Math.floor(Math.random() * 255)}`;
+      
+      
+      if (parseInt(redVar) <= 255){
       rainbowPixel.style.background = `rgb(${redVar}, ${greenVar}, ${blueVar})`;
+    }
       
       // For each pass of the mouse the pixels should get darker
       if (parseInt(redVar) <= 255){
@@ -186,6 +195,8 @@ rainbows.addEventListener('click', () => {
         redVar = `${parseInt(redVar) + 10}`;
         console.log(`New Red Var: ${redVar}`)
       }
+      counter++;
+      console.log(`Counter at the end ${counter}`);
       // if (greenVar <= 255){
       //   greenVar += 10;
       // }
