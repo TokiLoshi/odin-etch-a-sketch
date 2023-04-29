@@ -181,9 +181,11 @@ rainbows.addEventListener('click', () => {
       rainbowPixel.style.background = `rgb(${redVar}, ${greenVar}, ${blueVar})`;
       
       // For each pass of the mouse the pixels should get darker
-      // if (redVar <= 255){
-      //   redVar += 10;
-      // }
+      if (parseInt(redVar) <= 255){
+        console.log("Red var is less")
+        redVar = `${parseInt(redVar) + 10}`;
+        console.log(`New Red Var: ${redVar}`)
+      }
       // if (greenVar <= 255){
       //   greenVar += 10;
       // }
