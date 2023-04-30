@@ -1,26 +1,26 @@
 body{
   font-family: "Courier New";
   margin: 0;
-  background: rgb(114, 7, 114);
+  background: rgb(29, 25, 29);
   text-align: center;
-  margin: 50px 150px;
+  margin: 10px 50px;
 
 }
 
 h1{
   text-align: center;
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: monospace;
 }
 
 .credit {
-  color: white;
+  color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
   margin: 0px;
 }
 .credit a {
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 .container {
@@ -28,8 +28,9 @@ h1{
   justify-content: center; */
   /* padding: 10px; */
   text-align: center;
-  background: rgb(89, 8, 116);
-  color: white;
+  background: rgb(43, 108, 145);
+  background: rgb(2, 175, 255);
+  color: rgb(255, 255, 255);
   /* padding: 15px; */
   /* padding: 50px;
   margin: 30px; */
@@ -40,13 +41,20 @@ h1{
   /* height: 960px; */
 
 }
+.placeholder {
+
+  display: block;
+  text-align: center;
+
+}
 
 .sketchButton {
   color: rgb(255, 255, 255);
-  background: rgb(255, 166, 2);
+  background: rgb(2, 175, 255);
+  background: rgb(43, 108, 145);
   font-size: 18px;
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 5px;
   margin: 10px;
 }
@@ -57,13 +65,12 @@ h1{
 }
 
 .sketchpad {
-  margin:0px;
-  padding: 0px auto;
+
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  background: rgb(141, 8, 207);
+  background: rgb(87, 110, 141);
   cursor: pointer;
   /* width: 960px; */
   box-shadow: 0px 2px  2px;
@@ -71,6 +78,6 @@ h1{
 }
 
 .square {
-  background: white;
+  background: rgb(255, 255, 255);
   text-align: center;
 }

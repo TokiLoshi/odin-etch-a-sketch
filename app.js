@@ -1,5 +1,5 @@
 // Get container Element to put stuff in
-const getContainer = document.querySelector('.container');
+const getContainer = document.querySelector('.placeholder');
 
 // Create Sketch Button to trigger sketching
 const sketchButton = document.createElement('button');
@@ -21,12 +21,18 @@ sketchButton.addEventListener('click', () => {
 function createSketchPad(size) {
 const sketchPad = document.createElement('div');
 sketchPad.classList = 'sketchpad';
+sketchPad.setAttribute('style', 'width 300px; height: 300px;')
 console.log(`Size: ${size}`);
 
 // sketchPad.textContent = 'Sketching';
 sketchPad.setAttribute('style', 'color: white; border: solid 1px white;');
+
+// sketchPad.setAttribute('style', `width: ${getContainerWidth}; height:${getContainerHeight};`)
+
 getContainer.appendChild(sketchPad);
+
 const getContainerWidth = sketchPad.offsetWidth;
+const getContainerHeight = sketchPad.offsetHeight;
 console.log(`Container width: ${getContainerWidth}`)
 const squareWidth = (getContainerWidth - 2) / size;
 console.log(`SquareWidth: ${squareWidth}`)
