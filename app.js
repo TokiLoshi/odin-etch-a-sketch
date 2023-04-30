@@ -19,15 +19,17 @@ sketchButton.addEventListener('click', () => {
 
 // Create initial sketchpad 
 function createSketchPad(size) {
-console.log(`Size: ${size}`);
-const squareWidth = 960 / size;
-console.log(`SquareWidth: ${squareWidth}`)
-
 const sketchPad = document.createElement('div');
 sketchPad.classList = 'sketchpad';
+console.log(`Size: ${size}`);
+
 // sketchPad.textContent = 'Sketching';
-sketchPad.setAttribute('style', 'color: white; border: solid 1px black;');
+sketchPad.setAttribute('style', 'color: white; border: solid 1px white;');
 getContainer.appendChild(sketchPad);
+const getContainerWidth = sketchPad.offsetWidth;
+console.log(`Container width: ${getContainerWidth}`)
+const squareWidth = (getContainerWidth - 2) / size;
+console.log(`SquareWidth: ${squareWidth}`)
 sketchButton.remove()
 
 // In sketchbox create 16x 60px wide and high squares
@@ -49,7 +51,7 @@ for (i=1; i <= size; i++){
 const newPixels = document.querySelectorAll('.square')
 newPixels.forEach((newPixel) => {
   newPixel.addEventListener('mouseover', () => {
-    newPixel.style.background = 'purple';
+    newPixel.style.background = `rgb(141, 8, 207)`;
   })
 });
 
@@ -86,7 +88,8 @@ changeCanvas.addEventListener('click', () => {
 
 // Add button to allow user to erase
 const eraser = document.createElement('button');
-eraser.textContent = "Erase";
+// eraser.textContent = "Erase";
+eraser.innerHTML = `<i class="fa-solid fa-eraser" style="color: #ffffff;"></i>`
 eraser.classList = 'sketchButton';
 sketchPad.appendChild(eraser);
 
@@ -102,7 +105,8 @@ eraser.addEventListener('click', () => {
 
 // Create button to let user "keep drawing"
 const keepDrawing = document.createElement('button');
-keepDrawing.textContent = "Sketch";
+// keepDrawing.textContent = "Sketch";
+keepDrawing.innerHTML = `<i class="fa-solid fa-paintbrush" style="color: #ffffff;"></i>`;
 keepDrawing.classList = "sketchButton";
 sketchPad.append(keepDrawing);
 
@@ -111,7 +115,7 @@ keepDrawing.addEventListener('click', () => {
   const drawPixels = document.querySelectorAll('.square');
   drawPixels.forEach((drawPixel) => {
     drawPixel.addEventListener('mouseover', () => {
-      drawPixel.style.background = 'purple';
+      drawPixel.style.background = `rgb(141, 8, 207)`;
     })
   })
 })
@@ -131,43 +135,59 @@ clearAll.addEventListener('click', () => {
 
 // Add random colors
 const rainbows = document.createElement('button');
-rainbows.textContent = "Go Rainbow";
+// rainbows.textContent = "Go Rainbow";
+rainbows.innerHTML = `<i class="fa-solid fa-palette" style="color: #ffffff;"></i>`;
 rainbows.classList = "sketchButton";
 sketchPad.append(rainbows);
 
 // 
+// console.log(`Counter at beginning; ${counter}`)
+      // let redVar = `${Math.floor(Math.random() * 255)}`;
+      // console.log(`Red Var: ${redVar}`)
+      // let greenVar = `${Math.floor(Math.random() * 255)}`;
+      // console.log(`Green Var: ${greenVar}`)
+      // let blueVar = `${Math.floor(Math.random() * 255)}`;
+
 rainbows.addEventListener('click', () => {
-  let counter = 0
   const rainbowPixels = document.querySelectorAll('.square');
   rainbowPixels.forEach((rainbowPixel) => {
+    console.log(`background in for Pixel id: ${rainbowPixel.id} is ${rainbowPixel.style.background}`)
     rainbowPixel.addEventListener('mouseover', () => {
-
-      console.log(`Counter at beginning; ${counter}`)
-      let redVar = `${Math.floor(Math.random() * 255)}`;
-      console.log(`Red Var: ${redVar}`)
-      let greenVar = `${Math.floor(Math.random() * 255)}`;
-      console.log(`Green Var: ${greenVar}`)
-      let blueVar = `${Math.floor(Math.random() * 255)}`;
-      
-      
-      if (parseInt(redVar) <= 255){
-      rainbowPixel.style.background = `rgb(${redVar}, ${greenVar}, ${blueVar})`;
-    }
-      
+      console.log(`**** MOUSE OVER OCCURED **** on ${rainbowPixel.id}`)
       // For each pass of the mouse the pixels should get darker
-      if (parseInt(redVar) <= 255){
-        console.log("Red var is less")
-        redVar = `${parseInt(redVar) + 10}`;
-        console.log(`New Red Var: ${redVar}`)
+      let redVar = `${Math.floor(Math.random() * 255)}`;
+      let greenVar = `${Math.floor(Math.random() * 255)}`;
+      let blueVar = `${Math.floor(Math.random() * 255)}`;
+
+      if (rainbowPixel.style.background !== `rgb(141, 8, 207)`) {
+        
+        console.log(`Pixel ${rainbowPixel.id} has been colored in and is ${rainbowPixel.style.background}`)
       }
-      counter++;
-      console.log(`Counter at the end ${counter}`);
-      // if (greenVar <= 255){
-      //   greenVar += 10;
-      // }
-      // if (blueVar <= 255){
-      //   blueVar += 10;
-      // }
+      else if (rainbowPixel.style.background !== `white`){
+        console.log(`In else if statement `)
+        console.log(`Pixel ${rainbowPixel.id} is not white`)
+        console.log(`Old red var: ${redVar}`)
+        rainbowPixel.style.background = `rgb(${parseInt(redVar) + 10}, ${greenVar}, ${blueVar})`;
+        console.log(`New red var: ${redVar}`)
+      }
+      else {
+      console.log(`In else statement`)
+
+      // let redVar = `${Math.floor(Math.random() * 255)}`;
+      // let greenVar = `${Math.floor(Math.random() * 255)}`;
+      // let blueVar = `${Math.floor(Math.random() * 255)}`;
+
+      console.log(`Background of pixel ${rainbowPixel.id} after math line 166: ${rainbowPixel.style.background}`)
+      rainbowPixel.id.setAttribute('class', 'set')
+      rainbowPixel.style.background = `rgb(${redVar}, ${greenVar}, ${blueVar})`;
+
+      console.log(`Background of pixel after setting in line 168: ${rainbowPixel.style.background}`)
+    }
+
+    console.log(`The background color of the pixel is: ${rainbowPixel.style.background}`)
+      
+      
+    
     })
   })
 })

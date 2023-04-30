@@ -1,20 +1,22 @@
 body{
   font-family: "Courier New";
   margin: 0;
+  background: rgb(114, 7, 114);
+  text-align: center;
+  margin: 50px 150px;
+
 }
 
 h1{
   text-align: center;
-  color: purple;
+  color: white;
   font-family: monospace;
 }
 
 .credit {
-  background: rgb(114, 7, 114);
   color: white;
   display: flex;
   justify-content: center;
-  padding: 10px;
   margin: 0px;
 }
 .credit a {
@@ -24,13 +26,18 @@ h1{
 .container {
   /* display: flex;
   justify-content: center; */
+  /* padding: 10px; */
   text-align: center;
   background: rgb(89, 8, 116);
   color: white;
-  padding: 50px;
-  margin: 30px;
+  /* padding: 15px; */
+  /* padding: 50px;
+  margin: 30px; */
+  margin: 0 auto;
   border-radius: 5px;
-  box-shadow: 10px 10px;
+  box-shadow: 2px 2px 2px 2px;
+  /* width: 960px; */
+  /* height: 960px; */
 
 }
 
@@ -51,14 +58,15 @@ h1{
 
 .sketchpad {
   margin:0px;
-  padding: 0px;
+  padding: 0px auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  background: grey;
+  background: rgb(141, 8, 207);
   cursor: pointer;
-  width: 960px;
+  /* width: 960px; */
+  box-shadow: 0px 2px  2px;
 
 }
 
